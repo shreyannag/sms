@@ -1,4 +1,4 @@
-.footer{
+.footer-item{
     position: fixed;
     left:0;
     bottom:0;
@@ -6,4 +6,15 @@
     background-color: rgb(19, 6, 82);
     color: white;
     text-align:center;
+    opacity: 1;
+    transition: 1s opacity;
+    animation-name: HideIt;
+    animation-duration: 5s;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes HideIt{
+    from {opacity: 1;}
+    to { opacity: 0;}
 }
