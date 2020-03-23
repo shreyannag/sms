@@ -11,6 +11,7 @@
     <div class="w3-container w3-blue">
         <h1 align="center">School Management System</h1>
         </div>
+
     <div class="w3-cell-row w3-margin-top w3-margin-section">
         <div class="w3-container w3-cell">
             <div class="w3-container w3-red">
@@ -46,6 +47,17 @@
             <div class="w3-container w3-green">
                 <h2 align="center">School Login</h2>
               </div>
+                      <!--Show if and only if, database and account generation is complete-->
+                 <?php
+                error_reporting(0);
+                 if($_GET["confirmation"]!=''){
+                    echo "<div id='hideauto' class='w3-container w3-indigo' onclick=hideafterhover()>";
+                    echo "<p align=center>Database successfully created</p>";
+                    echo "</div>";
+                 }else{
+                
+                }
+                ?>
             <div class="w3-card-4 w3-padding-16">
                 <form class="w3-container">
 
@@ -67,6 +79,7 @@
             </div>
         </div>
     </div>
-<div class="footer-item"><p>Work In Progress</p></div>
+    <div class="footer-item"><p>Work In Progress</p></div>
 </body>
+<script src="custom.js"></script>
 </html>

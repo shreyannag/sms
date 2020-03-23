@@ -18,3 +18,7 @@
     from {opacity: 1;}
     to { opacity: 0;}
 }
+
+#hideauto{
+    display: block;
+}

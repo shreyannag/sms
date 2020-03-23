@@ -10,6 +10,7 @@ $password = $_POST["regpassword"];
 $question = $_POST["regquestion"];
 $answer = $_POST["reganswer"];
 
+$confirmation = '';
 
 # echo $schooladdress."<br>".$schoolphone."<br>".$schoolemail."<br>".$schoolphone."<br>".$password."<br>".$answer;
 
@@ -33,7 +34,7 @@ if($connect->query($change)==TRUE){
 
 
 #create table admin
-$sql2 = "CREATE TABLE IF NOT EXISTS schooladmin(schoolname text,schoolphone text,schoolemail text,schoolpassword text,question text,answer text)";
+$sql2 = "CREATE TABLE IF NOT EXISTS schooladmin(schoolname text,schoolphone text,schooladdress text,schoolemail text,schoolpassword text,question text,answer text)";
 
 if($connect->query($sql2)==TRUE){
     echo "School Admin Table Created";
@@ -43,13 +44,16 @@ if($connect->query($sql2)==TRUE){
 
 #insert data into table admin
 
-$insertdata = "INSERT INTO schooladmin(schoolname text,schoolphone text,schooladdress text,schoolemail text,schoolpassword text,question text,answer text) VALUES ('$schoolname','$schoolphone','$schooladdress','$schoolemail','$password','$question','$answer')";
+$insertdata = "INSERT INTO schooladmin(schoolname,schoolphone,schooladdress,schoolemail,schoolpassword,question,answer) VALUES ('$schoolname','$schoolphone','$schooladdress','$schoolemail','$password','$question','$answer')";
 
 if($connect->query($insertdata)==TRUE){
     echo "Successfully inserted values";
+    header("Location: index.php?confirmation=Successfull");
+
 }else{
     echo "Error inserting values".$connect->error;
 }
 
+$connect->close();
 
 ?>
