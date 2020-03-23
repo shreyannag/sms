@@ -59,19 +59,19 @@
                 }
                 ?>
             <div class="w3-card-4 w3-padding-16">
-                <form class="w3-container">
+                <form class="w3-container" action="login.php" method="POST">
 
                     <label>School Name</label>
-                    <input class="w3-input" type="text">
+                    <input class="w3-input" type="text" name="lname">
                     
                     <label>School Email</label>
-                    <input class="w3-input" type="text">
+                    <input class="w3-input" type="text" name="lemail">
 
                     <label>Registered Phone</label>
-                    <input class="w3-input" type="text">
+                    <input class="w3-input" type="text" name="lphone">
 
                     <label>Password</label>
-                    <input class="w3-input" type="password">
+                    <input class="w3-input" type="password" name="lpassword">
 
                     <input type="submit" class="w3-button w3-blue w3-margin-top" value="Login">
                     <input type="button" class="w3-button w3-blue w3-margin-top" value="Forgot Password?">
