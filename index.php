@@ -33,7 +33,9 @@
                     <input class="w3-input" type="text" name="regschoolemail">
 
                     <label>Password</label>
-                    <input class="w3-input" type="password" name="regpassword">
+                    <input id="passwd" class="w3-input" type="password" name="regpassword" oninput="checkstrength()">
+                    <label>Confirm Password</label>
+                    <input class="w3-input" type="password" name="confirmpassword">
 
                     <label>Set A Security Challenge Question</label>
                     <input class="w3-input" type="text" name="regquestion" placeholder="Your Question">
@@ -54,9 +56,12 @@
                     echo "<div id='hideauto' class='w3-container w3-indigo' onclick=hideafterhover()>";
                     echo "<p align=center>Database successfully created</p>";
                     echo "</div>";
+                 }elseif($_GET["info"]=="Incorrect"){
+                    echo "<div id='hideauto' class='w3-container w3-indigo' onclick=hideafterhover()>";
+                    echo "<p align=center>Incorrect Credentials. Try Again</p>";
+                    echo "</div>";
                  }else{
-                
-                }
+                 }
                 ?>
             <div class="w3-card-4 w3-padding-16">
                 <form class="w3-container" action="login.php" method="POST">

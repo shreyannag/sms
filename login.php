@@ -1,14 +1,24 @@
 <?php
+//intialize the session
+session_start();
+
+//Check whether the user is logged in, if yes then redirect to dashboard
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true){
+    header("location: dashboard.php");
+    exit;
+}
+//Include config file
 include 'config.php';
+
 
 $loginName = $_POST["lname"];
 $loginemail = $_POST["lemail"]; 
 $loginphone = $_POST["lphone"];
 $loginpassword = $_POST["lpassword"];
 
-$dNameSql = "SELECT schoolname from schooladmin";
-$dEmailSql = "SELECT schoolemail from schooladmin";
-$dPhoneSql = "SELECT schoolphone from schooladmin";
-$dPassword = "SELECT password from schooladmin";
+//Check if loginName is empty
+if(empty(trim($loginName)) || empty(trim($loginemail)) || empty(trim($loginphone)) || empty(trim($loginpassword))){
+    header(index.php?info=Incorrect);
+}
 
 ?>
