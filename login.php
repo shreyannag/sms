@@ -16,9 +16,17 @@ $loginemail = $_POST["lemail"];
 $loginphone = $_POST["lphone"];
 $loginpassword = $_POST["lpassword"];
 
+
 //Check if loginName is empty
 if(empty(trim($loginName)) || empty(trim($loginemail)) || empty(trim($loginphone)) || empty(trim($loginpassword))){
-    header(index.php?info=Incorrect);
+    header("index.php?info=Incorrect");
 }
+else{
+    //Prepare sql statement
+    $sql = "SELECT id,schoolname,schoolphone,schoolemail,schoolpassword FROM schooladmin WHERE schoolname = $loginName AND schoolphone = $loginphone AND schoolemail = $loginemail AND schoolpassword = $loginpassword";
+    
+
+}
+
 
 ?>

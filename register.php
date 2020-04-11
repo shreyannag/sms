@@ -1,7 +1,5 @@
 <?php
-
 include 'config.php';
-
 $schoolname = $_POST["regschoolname"];
 $schoolphone = $_POST["regschoolphone"];
 $schooladdress = $_POST["regschooladdress"];
@@ -34,7 +32,7 @@ if($connect->query($change)==TRUE){
 
 
 #create table admin
-$sql2 = "CREATE TABLE IF NOT EXISTS schooladmin(schoolname text,schoolphone text,schooladdress text,schoolemail text,schoolpassword text,question text,answer text)";
+$sql2 = "CREATE TABLE IF NOT EXISTS schooladmin(id int auto_increment primary key,schoolname text,schoolphone text,schooladdress text,schoolemail text,schoolpassword text,question text,answer text)";
 
 if($connect->query($sql2)==TRUE){
     echo "<br>School Admin Table Created";
