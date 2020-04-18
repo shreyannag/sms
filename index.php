@@ -65,15 +65,9 @@
                 ?>
             <div class="w3-card-4 w3-padding-16">
                 <form class="w3-container" action="login.php" method="POST">
-
-                    <label>School Name</label>
-                    <input class="w3-input" type="text" name="lname">
                     
                     <label>School Email</label>
                     <input class="w3-input" type="text" name="lemail">
-
-                    <label>Registered Phone</label>
-                    <input class="w3-input" type="text" name="lphone">
 
                     <label>Password</label>
                     <input class="w3-input" type="password" name="lpassword">

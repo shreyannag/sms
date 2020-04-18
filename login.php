@@ -10,23 +10,33 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true){
 //Include config file
 include 'config.php';
 
-
-$loginName = $_POST["lname"];
 $loginemail = $_POST["lemail"]; 
-$loginphone = $_POST["lphone"];
 $loginpassword = $_POST["lpassword"];
-
+$id = 0;
 
 //Check if loginName is empty
-if(empty(trim($loginName)) || empty(trim($loginemail)) || empty(trim($loginphone)) || empty(trim($loginpassword))){
-    header("index.php?info=Incorrect");
+if(empty(trim($loginemail)) || empty(trim($loginpassword))){
+    echo "<h1>Enter your email and password</h1>";
 }
 else{
-    //Prepare sql statement
-    $sql = "SELECT id,schoolname,schoolphone,schoolemail,schoolpassword FROM schooladmin WHERE schoolname = $loginName AND schoolphone = $loginphone AND schoolemail = $loginemail AND schoolpassword = $loginpassword";
-    
-
+    $sql = "SELECT id,schoolemail,schoolpassword FROM schooladmin WHERE schoolemail='".$loginemail."' AND schoolpassword='".$loginpassword."' LIMIT 1";
+    //if query is successful returns true
+    if($result = $connect->query($sql)){        
+        //if number of rows is 1
+        if(($rows = $result->num_rows)==1){
+            //store id from query
+            while($fieldinfo = $result->fetch_filed()){
+                $id = $fieldinfo->id;
+            }
+            $_SESSION["loggedin"] = true;
+            $_SESSION["id"] = $id;
+            $_SESSION["email"] = $loginemail;
+            //then head to dashboard
+            header("Location: dashboard.php");
+        }
+    }else{
+        echo "<h1>Invalid Credentials</h1>";
+    }
+    $connect->close();
 }
-
-
 ?>
