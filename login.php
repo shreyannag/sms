@@ -13,30 +13,35 @@ include 'config.php';
 $loginemail = $_POST["lemail"]; 
 $loginpassword = $_POST["lpassword"];
 $id = 0;
-
-//Check if loginName is empty
-if(empty(trim($loginemail)) || empty(trim($loginpassword))){
-    echo "<h1>Enter your email and password</h1>";
+//connect to database
+$change = "USE sms";
+if($connect->query($change)==TRUE){
+    echo "<br>Using sms database";
+}else{
+    echo "<br>Error changing database ".$connect->error;
 }
-else{
+//login query
+if(isset($loginemail) && isset($loginpassword)){
     $sql = "SELECT id,schoolemail,schoolpassword FROM schooladmin WHERE schoolemail='".$loginemail."' AND schoolpassword='".$loginpassword."' LIMIT 1";
-    //if query is successful returns true
-    if($result = $connect->query($sql)){        
-        //if number of rows is 1
+    if(($result = $connect->query($sql))==true)
+    {
         if(($rows = $result->num_rows)==1){
-            //store id from query
-            while($fieldinfo = $result->fetch_filed()){
+            while($fieldinfo = $result->fetch_field()){
                 $id = $fieldinfo->id;
             }
             $_SESSION["loggedin"] = true;
             $_SESSION["id"] = $id;
             $_SESSION["email"] = $loginemail;
+            //free result memory
+            $result -> free_result();
             //then head to dashboard
             header("Location: dashboard.php");
+            }else{echo "<p>Account Not Found</p>";}
         }
-    }else{
-        echo "<h1>Invalid Credentials</h1>";
+        else{ echo "<p>Account Not Found</p>";}
+        $connect->close();
     }
-    $connect->close();
-}
+    else{
+    echo "<p>Email not found</p>";
+    }
 ?>
