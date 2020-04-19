@@ -56,12 +56,11 @@
                     echo "<div id='hideauto' class='w3-container w3-indigo' onclick=hideafterhover()>";
                     echo "<p align=center>Database successfully created</p>";
                     echo "</div>";
-                 }elseif($_GET["info"]=="Incorrect"){
+                 }elseif($_GET["info"]!=''){
                     echo "<div id='hideauto' class='w3-container w3-indigo' onclick=hideafterhover()>";
                     echo "<p align=center>Incorrect Credentials. Try Again</p>";
                     echo "</div>";
-                 }else{
-                 }
+                 }else{/*dummy else statement*/}
                 ?>
             <div class="w3-card-4 w3-padding-16">
                 <form class="w3-container" action="login.php" method="POST">

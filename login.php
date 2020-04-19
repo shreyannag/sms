@@ -36,9 +36,15 @@ if(isset($loginemail) && isset($loginpassword)){
             $result -> free_result();
             //then head to dashboard
             header("Location: dashboard.php");
-            }else{echo "<p>Account Not Found</p>";}
+            }else{
+                echo "<p>Account Not Found</p>";
+                header("Location: index.php?info=AccountNotFound");
+            }
         }
-        else{ echo "<p>Account Not Found</p>";}
+        else{ 
+            echo "<p>Account Not Found</p>";
+            header("Location: index.php?info=AccountNotFound");
+        }
         $connect->close();
     }
     else{
